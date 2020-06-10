@@ -13,6 +13,13 @@ export default class CreateOrdersProducts1591807145920
         name: 'orders_products',
         columns: [
           {
+            name: 'id',
+            type: 'uuid',
+            isPrimary: true,
+            generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
+          },
+          {
             name: 'product_id',
             type: 'uuid',
           },

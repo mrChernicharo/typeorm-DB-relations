@@ -26,6 +26,7 @@ class FindOrderService {
     if (!checkOrderExists) {
       throw new AppError('Cannot find order');
     }
+    return checkOrderExists;
   }
 }
 
