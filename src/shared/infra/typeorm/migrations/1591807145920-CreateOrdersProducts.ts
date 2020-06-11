@@ -53,7 +53,7 @@ export default class CreateOrdersProducts1591807145920
         foreignKeys: [
           {
             name: 'FK_product_id',
-            referencedTableName: 'product',
+            referencedTableName: 'products',
             referencedColumnNames: ['id'],
             columnNames: ['product_id'],
             onUpdate: 'RESTRICT',
@@ -61,7 +61,7 @@ export default class CreateOrdersProducts1591807145920
           },
           {
             name: 'FK_order_id',
-            referencedTableName: 'order',
+            referencedTableName: 'orders',
             referencedColumnNames: ['id'],
             columnNames: ['order_id'],
             onUpdate: 'CASCADE',

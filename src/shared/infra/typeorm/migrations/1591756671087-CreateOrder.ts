@@ -4,7 +4,7 @@ export default class CreateOrder1591756671087 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'order',
+        name: 'orders',
         columns: [
           {
             name: 'id',
@@ -33,7 +33,7 @@ export default class CreateOrder1591756671087 implements MigrationInterface {
             name: 'FK_customer_id',
             columnNames: ['customer_id'],
             referencedColumnNames: ['id'],
-            referencedTableName: 'customer',
+            referencedTableName: 'customers',
             onUpdate: 'CASCADE',
             onDelete: 'SET NULL',
           },
@@ -43,7 +43,10 @@ export default class CreateOrder1591756671087 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropForeignKey('order', 'FK_customer_id');
-    await queryRunner.dropTable('order');
+    const table = queryRunner.getTable('orders');
+    if (table) {
+      await queryRunner.dropForeignKey('orders', 'FK_customer_id');
+      await queryRunner.dropTable('orders');
+    }
   }
 }
